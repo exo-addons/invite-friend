@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>addons-parent-pom</artifactId>
+    <groupId>org.exoplatform.addons</groupId>
+    <version>4</version>
+    <relativePath />
+  </parent>
+  <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
+  <artifactId>exo-invite-friend-addon</artifactId>
+  <version>1.0.x-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>eXo Invite Friend</name>
+  <description>allow user to invite his friends on exo</description>
+  <modules>
+    <module>webapp</module>
+    <module>bundle</module>
+  </modules>
+  <!--scm>
+    <connection>scm:git:git://github.com/exo-addons/exo-invite-friend.git</connection>
+    <developerConnection>scm:git:git@github.com:exo-addons/exo-invite-friend.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/exo-addons/exo-invite-friend.git</url>
+  </scm-->
+  <properties>
+    <exoplatform.version>4.1-M2</exoplatform.version>
+    <exo.portal.version>3.5.13-PLF</exo.portal.version>
+    <exo.core.component.organization.version>2.5.11-GA</exo.core.component.organization.version>
+    <exo.core.component.social.version>4.1-M2</exo.core.component.social.version>
+    <exo.component.social.webui.version>4.1.0</exo.component.social.webui.version>
+    <exo.kernel.commons.version>2.4.11-GA</exo.kernel.commons.version>
+    <juzu.version>1.0.0-cr1</juzu.version>
+
+    <!-- Dependency versions -->
+    <junit.version>4.8.2</junit.version>
+
+    <!-- Test settings -->
+    <juzu.test.compiler>javac</juzu.test.compiler>
+
+
+  </properties>
+
+  <!--distributionManagement>
+    <repository>
+      <id>repository.exoplatform.org</id>
+      <url>http://repository.exoplatform.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>repository.exoplatform.org</id>
+      <url>http://repository.exoplatform.org/content/repositories/juzu-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement-->
+
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- Application dependencies-->
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.component.web.api</artifactId>
+        <version>${exo.portal.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.commons</groupId>
+        <artifactId>commons-component-common</artifactId>
+        <version>${exoplatform.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.core</groupId>
+        <artifactId>exo.core.component.organization.api</artifactId>
+        <version>${exo.core.component.organization.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.social</groupId>
+        <artifactId>social-component-core</artifactId>
+        <version>${exo.core.component.social.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.social</groupId>
+        <artifactId>social-component-webui</artifactId>
+        <version>${exo.component.social.webui.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <!--dependency>
+        <groupId>org.exoplatform.platform</groupId>
+        <artifactId>platform</artifactId>
+        <version>${exoplatform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency-->
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-core</artifactId>
+        <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-servlet</artifactId>
+        <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-validation</artifactId>
+        <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-less4j</artifactId>
+        <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-webjars</artifactId>
+        <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery</artifactId>
+        <version>1.10.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20070829</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.portlet</groupId>
+        <artifactId>portlet-api</artifactId>
+        <version>2.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-portlet</artifactId>
+        <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.kernel</groupId>
+        <artifactId>exo.kernel.container</artifactId>
+        <version>2.4.x-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.jcr</groupId>
+        <artifactId>exo.jcr.component.ext</artifactId>
+        <version>1.15.x-SNAPSHOT</version>
+      </dependency>
+
+      <!-- Groovy is shipped with GateIn -->
+      <dependency>
+        <groupId>org.codehaus.groovy</groupId>
+        <artifactId>groovy-all</artifactId>
+        <version>1.7.6</version>
+      </dependency>
+
+      <!-- Servlet 3.x API -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.0.1</version>
+      </dependency>
+
+      <!-- Dependencies for Guice in GateIn portal -->
+      <dependency>
+        <groupId>javax.inject</groupId>
+        <artifactId>javax.inject</artifactId>
+        <version>1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.inject</groupId>
+        <artifactId>guice</artifactId>
+        <version>3.0</version>
+      </dependency>
+
+<!--      <dependency>
+        <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
+        <artifactId>exo-invite-friend-lib</artifactId>
+        <version>${project.version}</version>
+      </dependency>-->
+      <dependency>
+        <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
+        <artifactId>exo-invite-friend-webapp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+<!--      <dependency>
+        <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
+        <artifactId>exo-invite-friend-config</artifactId>
+        <version>${project.version}</version>
+      </dependency>-->
+
+    </dependencies>
+  </dependencyManagement>
+  <profiles>
+    <profile>
+      <id>project-repositories</id>
+      <activation>
+        <property>
+          <name>!skip-project-repositories</name>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <id>repository.exoplatform.org</id>
+          <url>https://repository.exoplatform.org/public</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <id>repository.exoplatform.org</id>
+          <url>https://repository.exoplatform.org/public</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <configuration>
+            <!-- Don't include libraries into Web Archives -->
+            <!--packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes-->
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <appendAssemblyId>false</appendAssemblyId>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

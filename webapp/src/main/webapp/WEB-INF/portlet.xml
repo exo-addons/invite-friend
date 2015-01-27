@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+             version="2.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd
+   http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
+
+  <portlet>
+    <description xml:lang="EN">This portlet allows user to invite his friend on exo platform</description>
+    <portlet-name>JuzeXoInviteFriend</portlet-name>
+    <display-name xml:lang="EN">Juzu eXo Invite Friend</display-name>
+    <portlet-class>org.juzu.exoinvitefriend.portlet.frontend.eXoInviteFriendFrontendPortlet</portlet-class>
+    <supports>
+      <mime-type>text/html</mime-type>
+    </supports>
+    <portlet-info>
+      <title>Juzu eXo Invite Friend</title>
+      <short-title>Juzu eXo Invite Friend</short-title>
+      <keywords>exo-invite-friend-webapp</keywords>
+    </portlet-info>
+  </portlet>
+</portlet-app>
