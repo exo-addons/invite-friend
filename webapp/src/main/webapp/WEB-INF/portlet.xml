@@ -7,11 +7,12 @@
 
   <portlet>
     <description xml:lang="EN">This portlet allows user to invite his friend on exo platform</description>
-    <portlet-name>JuzeXoInviteFriend</portlet-name>
+    <portlet-name>JuzExoInviteFriend</portlet-name>
     <display-name xml:lang="EN">Juzu eXo Invite Friend</display-name>
     <portlet-class>org.juzu.exoinvitefriend.portlet.frontend.eXoInviteFriendFrontendPortlet</portlet-class>
     <supports>
       <mime-type>text/html</mime-type>
+      <portlet-mode>edit</portlet-mode>
     </supports>
     <portlet-info>
       <title>Juzu eXo Invite Friend</title>

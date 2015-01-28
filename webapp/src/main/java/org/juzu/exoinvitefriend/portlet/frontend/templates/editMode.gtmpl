@@ -1,0 +1,3 @@
+#{param name=enableStoreData/}
+hi i am editmode
+<input type="checkbox" name="enableStoreData" value=1 <% if(enableStoreData){%> checked <% } %> /> Enable Store Data

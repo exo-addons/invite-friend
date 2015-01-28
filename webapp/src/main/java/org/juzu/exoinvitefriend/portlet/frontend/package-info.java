@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@Application(defaultController = JuZFrontendApplication.class)
+@Application(defaultController = JuZExoInviteFriendFrontendApplication.class)
 @Portlet(name = "eXoInviteFriendFrontendPortlet")
 @Assets("*")
 package org.juzu.exoinvitefriend.portlet.frontend;
