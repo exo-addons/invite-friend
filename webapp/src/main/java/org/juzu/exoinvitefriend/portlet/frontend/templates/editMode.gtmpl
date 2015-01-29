@@ -1,3 +1,5 @@
 #{param name=enableStoreData/}
-hi i am editmode
-<input type="checkbox" name="enableStoreData" value=1 <% if(enableStoreData){%> checked <% } %> /> Enable Store Data
+<div id="juzExoInviteFriendEditModeContainer" >
+    <input type="checkbox" id="exo-invite-friend-enableStoreData-1"  value="true" <% if(enableStoreData){%> checked <% } %> /> Enable Store Data
+    <button id="exo-invite-friend-edit-save" type="submit">Save</button>
+</div>

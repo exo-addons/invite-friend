@@ -106,16 +106,6 @@
       </dependency>
       <dependency>
         <groupId>org.juzu</groupId>
-        <artifactId>juzu-plugins-validation</artifactId>
-        <version>${juzu.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.juzu</groupId>
-        <artifactId>juzu-plugins-less4j</artifactId>
-        <version>${juzu.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.juzu</groupId>
         <artifactId>juzu-plugins-webjars</artifactId>
         <version>${juzu.version}</version>
       </dependency>

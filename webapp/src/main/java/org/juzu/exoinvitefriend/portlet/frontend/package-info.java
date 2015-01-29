@@ -15,9 +15,28 @@
  */
 @Application(defaultController = JuZExoInviteFriendFrontendApplication.class)
 @Portlet(name = "eXoInviteFriendFrontendPortlet")
+@Bindings({
+  @Binding(value = SessionProviderService.class), @Binding(value = NodeHierarchyCreator.class),
+  @Binding(value = IService.class,implementation = JCRImpl.class)
+})
+@WebJars(@WebJar("jquery"))
+@Scripts({
+  @Script(id="jquery",value = "jquery/1.10.2/jquery.js"),
+  @Script(value = "javascripts/exoinvitefriend.js",depends = "jquery")
+})
 @Assets("*")
 package org.juzu.exoinvitefriend.portlet.frontend;
 
 import juzu.Application;
 import juzu.plugin.asset.Assets;
+import juzu.plugin.asset.Script;
+import juzu.plugin.asset.Scripts;
+import juzu.plugin.binding.Binding;
+import juzu.plugin.binding.Bindings;
 import juzu.plugin.portlet.Portlet;
+import juzu.plugin.webjars.WebJar;
+import juzu.plugin.webjars.WebJars;
+import org.exoplatform.services.jcr.ext.app.SessionProviderService;
+import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
+import org.juzu.exoinvitefriend.portlet.commons.services.IService;
+import org.juzu.exoinvitefriend.portlet.commons.services.JCRImpl;

@@ -1,3 +1,4 @@
 <div id="juzExoInviteFriendContainer">
-
+    <div class="alert" id="JuzExoInviteFriendAlertContainer" style="visibility:hidden;"></div>
+    <input type="text" id="exo-invite-friend-invitee" /><button class="btn" id="exo-invite-friend-send">Send</button>
 </div>
