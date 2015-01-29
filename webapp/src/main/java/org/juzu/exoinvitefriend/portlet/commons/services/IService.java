@@ -7,7 +7,7 @@ import org.juzu.exoinvitefriend.portlet.commons.models.Invitation;
  */
 public interface IService {
 
-  public void sendInvitation(Invitation invitation);
+  public void sendInvitation(String inviter, String invitee);
   public Invitation storeInvitation(Invitation invitation);
 
 }

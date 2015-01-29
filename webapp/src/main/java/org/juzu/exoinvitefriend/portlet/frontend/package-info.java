@@ -17,6 +17,8 @@
 @Portlet(name = "eXoInviteFriendFrontendPortlet")
 @Bindings({
   @Binding(value = SessionProviderService.class), @Binding(value = NodeHierarchyCreator.class),
+  @Binding(value = IdentityManager.class),
+  @Binding(value = MailService.class),
   @Binding(value = IService.class,implementation = JCRImpl.class)
 })
 @WebJars(@WebJar("jquery"))
@@ -38,5 +40,7 @@ import juzu.plugin.webjars.WebJar;
 import juzu.plugin.webjars.WebJars;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
+import org.exoplatform.services.mail.MailService;
+import org.exoplatform.social.core.manager.IdentityManager;
 import org.juzu.exoinvitefriend.portlet.commons.services.IService;
 import org.juzu.exoinvitefriend.portlet.commons.services.JCRImpl;

@@ -5,8 +5,11 @@ import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.services.mail.MailService;
+import org.exoplatform.social.core.manager.IdentityManager;
 import org.juzu.exoinvitefriend.portlet.commons.models.Invitation;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.*;
 import java.util.HashSet;
@@ -21,12 +24,22 @@ public class JCRImpl implements IService {
   private static final String NODE_PROP_EXO_INVITE_FRIEND = "eXoInviteFriendApplication";
   private static final String NODE_PROP_INVITEES = "exo:invitee_emails";
   private static final String NODE_PROP_INVITER_USERNAME = "exo:inviter_username";
+  private EmailService emailService;
 
   @Inject
   SessionProviderService sessionProviderService;
   @Inject
   NodeHierarchyCreator nodeHierarchyCreator;
 
+  @Inject
+  IdentityManager identityManager;
+  @Inject
+  MailService mailService;
+
+  @PostConstruct
+  public void init(){
+    emailService = new EmailService(identityManager,mailService);
+  }
   private Node getOrCreateAppHome() throws Exception {
     Node appHome = null;
     SessionProvider sProvider = sessionProviderService.getSystemSessionProvider(null);
@@ -93,7 +106,7 @@ public class JCRImpl implements IService {
           }
           invitation.setInvitee_emails(new_invitee_emails);
         }else{
-          invitationNode = homeApp.addNode(invitation.getInviter(),"nt:unstructured");
+          invitationNode = homeApp.addNode(invitation.getInviter(), "nt:unstructured");
         }
         if (null != invitationNode){
           log.info("exo invite friend=> store data successfully");
@@ -111,8 +124,8 @@ public class JCRImpl implements IService {
     return null;
   }
   @Override
-  public void sendInvitation(Invitation invitation) {
-
+  public void sendInvitation(String inviter, String invitee) {
+    this.emailService.sendInvitation(inviter,invitee);
   }
 
 }
