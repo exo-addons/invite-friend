@@ -18,12 +18,12 @@
     <module>webapp</module>
     <module>bundle</module>
   </modules>
-  <!--scm>
-    <connection>scm:git:git://github.com/exo-addons/exo-invite-friend.git</connection>
-    <developerConnection>scm:git:git@github.com:exo-addons/exo-invite-friend.git</developerConnection>
+  <scm>
+    <connection>scm:git:git://github.com/exo-addons/invite-friend.git</connection>
+    <developerConnection>scm:git:git@github.com:exo-addons/invite-friend.git</developerConnection>
     <tag>HEAD</tag>
-    <url>https://github.com/exo-addons/exo-invite-friend.git</url>
-  </scm-->
+    <url>https://github.com/exo-addons/invite-friend.git</url>
+  </scm>
   <properties>
     <exoplatform.version>4.1-M2</exoplatform.version>
     <exo.portal.version>3.5.13-PLF</exo.portal.version>
@@ -87,13 +87,6 @@
         <version>${exo.component.social.webui.version}</version>
         <scope>provided</scope>
       </dependency>
-      <!--dependency>
-        <groupId>org.exoplatform.platform</groupId>
-        <artifactId>platform</artifactId>
-        <version>${exoplatform.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency-->
       <dependency>
         <groupId>org.juzu</groupId>
         <artifactId>juzu-core</artifactId>
@@ -165,23 +158,11 @@
         <artifactId>guice</artifactId>
         <version>3.0</version>
       </dependency>
-
-<!--      <dependency>
-        <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
-        <artifactId>exo-invite-friend-lib</artifactId>
-        <version>${project.version}</version>
-      </dependency>-->
       <dependency>
         <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
         <artifactId>exo-invite-friend-webapp</artifactId>
         <version>${project.version}</version>
       </dependency>
-<!--      <dependency>
-        <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
-        <artifactId>exo-invite-friend-config</artifactId>
-        <version>${project.version}</version>
-      </dependency>-->
-
     </dependencies>
   </dependencyManagement>
   <profiles>
