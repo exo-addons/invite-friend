@@ -1,4 +1,5 @@
- -----------
+This add-on allows to send an invitation to join your platform instance
+-----------
    **exo-invite-friend addon currently has some main functions**
 
    - Send invitation to join on your website via email address.
