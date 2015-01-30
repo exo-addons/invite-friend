@@ -27,7 +27,7 @@ public class EmailService {
 
   final String email_invitation_template="/html/email_invitation_template.html";
   private String DNS;
-  public EmailService(IdentityManager identityManager,MailService mailService){
+  public  EmailService(IdentityManager identityManager,MailService mailService){
 
     this.identityManager = identityManager;
     this.exoMailService = mailService;

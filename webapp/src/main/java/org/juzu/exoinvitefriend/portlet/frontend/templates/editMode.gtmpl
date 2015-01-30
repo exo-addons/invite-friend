@@ -1,5 +1,7 @@
 #{param name=enableStoreData/}
-<div id="juzExoInviteFriendEditModeContainer" >
-    <input type="checkbox" id="exo-invite-friend-enableStoreData-1"  value="true" <% if(enableStoreData){%> checked <% } %> /> Enable Store Data
-    <button id="exo-invite-friend-edit-save" type="submit">Save</button>
-</div>
+<form action="@{JuZExoInviteFriendFrontendApplication.saveSettings()}" method="POST">
+    <div id="juzExoInviteFriendEditModeContainer" >
+        <input type="checkbox" id="exo-invite-friend-enableStoreData" name="enableStoreData"   value="true" <% if(enableStoreData){%> checked <% } %> /> Enable Store Data
+        <button id="exo-invite-friend-edit-save" type="submit">Save</button>
+    </div>
+</form>

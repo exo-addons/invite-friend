@@ -86,12 +86,14 @@
       if(_validateEmail(email))
         _sendInvitation(email);
     });
+    /*
     $(document).on('click.exo-invite-friend-settings-save','button#exo-invite-friend-edit-save',function(){
       var enableStoreData = "false";
       if($("#exo-invite-friend-enableStoreData").prop("checked"))
         enableStoreData = "true";
       _saveEditMode(enableStoreData);
     });
+    */
   });
 
 })($);

@@ -1,17 +1,16 @@
 package org.juzu.exoinvitefriend.portlet.frontend;
 
-import juzu.Path;
-import juzu.Resource;
-import juzu.Response;
-import juzu.View;
+import juzu.*;
 import juzu.bridge.portlet.JuzuPortlet;
 import juzu.plugin.ajax.Ajax;
 import juzu.request.RequestContext;
 import juzu.request.SecurityContext;
+import org.exoplatform.portal.pom.config.tasks.PreferencesTask;
 import org.juzu.exoinvitefriend.portlet.commons.models.Invitation;
 import org.juzu.exoinvitefriend.portlet.commons.services.IService;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.portlet.PortletMode;
 import javax.portlet.PortletPreferences;
 import javax.portlet.ReadOnlyException;
@@ -55,9 +54,12 @@ public class JuZExoInviteFriendFrontendApplication {
   @Ajax
   @Resource
   public Response storeInvitation(SecurityContext securityContext,String email){
-    String currentUserName = securityContext.getUserPrincipal().getName();
-    if(null != iService.storeInvitation(this.valuateInvitation(currentUserName,email)))
-      return Response.ok("ok");
+    Boolean enableStoreData = Boolean.valueOf(portletPreferences.getValue(ENABLE_STORE_DATA,"true"));
+    if (enableStoreData){
+      String currentUserName = securityContext.getUserPrincipal().getName();
+      if(null != iService.storeInvitation(this.valuateInvitation(currentUserName,email)))
+        return Response.ok("ok");
+    }
     return Response.ok("nok");
   }
   @Ajax
@@ -84,4 +86,12 @@ public class JuZExoInviteFriendFrontendApplication {
     invitation.setInvitee_emails(invitee_emails);
     return invitation;
   }
+
+  @Action
+  public Response saveSettings(String enableStoreData) throws ReadOnlyException, IOException, ValidatorException {
+    portletPreferences.setValue(ENABLE_STORE_DATA,enableStoreData);
+    portletPreferences.store();
+    return JuZExoInviteFriendFrontendApplication_.index().with(JuzuPortlet.PORTLET_MODE, PortletMode.VIEW);
+  }
+
 }
