@@ -26,13 +26,12 @@
   @Script(id="jquery",value = "jquery/1.10.2/jquery.js"),
   @Script(value = "javascripts/exoinvitefriend.js",depends = "jquery")
 })
+@Stylesheets(@Stylesheet("css/exoinvitefriend.css"))
 @Assets("*")
 package org.juzu.exoinvitefriend.portlet.frontend;
 
 import juzu.Application;
-import juzu.plugin.asset.Assets;
-import juzu.plugin.asset.Script;
-import juzu.plugin.asset.Scripts;
+import juzu.plugin.asset.*;
 import juzu.plugin.binding.Binding;
 import juzu.plugin.binding.Bindings;
 import juzu.plugin.portlet.Portlet;

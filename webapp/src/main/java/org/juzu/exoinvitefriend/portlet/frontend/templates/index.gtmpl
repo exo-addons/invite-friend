@@ -1,4 +1,14 @@
-<div id="juzExoInviteFriendContainer">
-    <div class="alert" id="JuzExoInviteFriendAlertContainer" style="visibility:hidden;"></div>
-    <input type="text" id="exo-invite-friend-invitee" /><button class="btn" id="exo-invite-friend-send">Send</button>
+<div class="uiBox exoInviteFriendBox">
+	<h6 class="title center">Invite a friend to join the tribe!</h6>
+	<div class="uiContentBox">
+		<div id="juzExoInviteFriendContainer">
+			<div class="alert" id="JuzExoInviteFriendAlertContainer" style="display: none;"></div>
+			<div class="clearfix">
+				<button class="btn btn-primary btnSend" id="exo-invite-friend-send">Invite</button>
+				<div class="inputResize">
+					<input placeholder="name@domain.com" type="text" id="exo-invite-friend-invitee" />
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

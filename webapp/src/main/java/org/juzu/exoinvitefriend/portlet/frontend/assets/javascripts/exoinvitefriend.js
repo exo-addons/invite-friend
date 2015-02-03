@@ -13,8 +13,10 @@
       alertDOM.addClass('alert-' + type);
       alertDOM.html(strIcon + message);
       alertDOM.css('visibility', 'visible');
+      alertDOM.show();
       setTimeout(function() {
         alertDOM.css("visibility" , "hidden");
+        alertDOM.hide();
       }, 5000);
     }
   };

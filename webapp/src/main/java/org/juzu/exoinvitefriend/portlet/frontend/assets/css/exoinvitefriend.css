@@ -1,0 +1,27 @@
+.exoInviteFriendBox {
+    position: relative;
+}
+.exoInviteFriendBox:before {
+    content: "";
+    background-image: url('/exo-invite-friend-webapp/images/vignette.png');
+    height: 32px;
+    left: 12px;
+    position: absolute;
+    top: -4px;
+    width: 20px;
+}
+
+.exoInviteFriendBox .btnSend {
+    float: right;
+    margin-left: 5px;
+}
+.exoInviteFriendBox .inputResize {
+    overflow: hidden;
+}
+.exoInviteFriendBox .inputResize input {
+    width: 100%;
+}
+.exoInviteFriendBox .alert {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
