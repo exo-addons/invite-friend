@@ -40,13 +40,14 @@ public class EmailService {
   private String generateSubject(Identity identity){
     return identity.getProfile().getFullName()+" has invited you to join "+this.getDNS();
   }
-  private String generateBody(Identity identity){
+  private String generateBody(Identity identity, String invitationUrl){
 
     if (null != identity){
       Map<String, String> props = new HashMap<String, String>();
       props.put("DNS",this.getDNS());
       props.put("DNS_URL",this.remoteUrl);
       props.put("inviter_fullname",identity.getProfile().getFullName());
+      props.put("invitation_url",invitationUrl);
       return this.getBodyByTemplate(email_invitation_template,props);
     }
     return null;
@@ -80,12 +81,12 @@ public class EmailService {
     }
     return templateContent;
   }
-  public void sendInvitation(String inviter,String invitee_email){
+  public void sendInvitation(String inviter,String invitee_email, String invitationUrl){
     Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME,inviter,true);
     if (null != identity){
       String sender = identity.getProfile().getFullName()+" | "+this.getDNS();
       String subject = this.generateSubject(identity);
-      String body = this.generateBody(identity) ;
+      String body = this.generateBody(identity,invitationUrl) ;
       if (null != body){
         try {
           log.info(" subject "+subject);

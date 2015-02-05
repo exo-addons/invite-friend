@@ -1,7 +1,23 @@
 #{param name=enableStoreData/}
+#{param name=invitationUrl/}
 <form action="@{JuZExoInviteFriendFrontendApplication.saveSettings()}" method="POST">
     <div id="juzExoInviteFriendEditModeContainer" >
-        <input type="checkbox" id="exo-invite-friend-enableStoreData" name="enableStoreData"   value="true" <% if(enableStoreData){%> checked <% } %> /> Enable Store Data
-        <button id="exo-invite-friend-edit-save" type="submit">Save</button>
+        <div class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="enableStoreData">Enable Store Data:</label>
+                <div class="controls">
+                     <input type="checkbox" id="exo-invite-friend-enableStoreData" name="enableStoreData"   value="true" <% if(enableStoreData){%> checked <% } %> />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="invitationUrl">Invitation Url:</label>
+                <div class="controls">
+                    <input name="invitationUrl" value="<%=invitationUrl%>" type="text" id="exo-invite-friend-url">
+                </div>
+            </div>
+        </div>
+        <div class="uiAction">
+            <button id="exo-invite-friend-edit-save" type="submit" class="btn">Save</button>
+        </div>
     </div>
 </form>

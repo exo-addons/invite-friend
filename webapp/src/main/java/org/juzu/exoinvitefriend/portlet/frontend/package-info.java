@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Application(defaultController = JuZExoInviteFriendFrontendApplication.class)
 @Portlet(name = "eXoInviteFriendFrontendPortlet")
 @Bindings({
   @Binding(value = SessionProviderService.class), @Binding(value = NodeHierarchyCreator.class),
   @Binding(value = IdentityManager.class),
   @Binding(value = MailService.class),
+  @Binding(value = OrganizationService.class),
   @Binding(value = IService.class,implementation = JCRImpl.class)
 })
 @WebJars(@WebJar("jquery"))
@@ -43,3 +45,4 @@ import org.exoplatform.services.mail.MailService;
 import org.exoplatform.social.core.manager.IdentityManager;
 import org.juzu.exoinvitefriend.portlet.commons.services.IService;
 import org.juzu.exoinvitefriend.portlet.commons.services.JCRImpl;
+import org.exoplatform.services.organization.OrganizationService;

@@ -47,13 +47,16 @@
     $('.jz').jzAjax('JuZExoInviteFriendFrontendApplication.sendInvitation()',{
       data:{email:email},
       success:function(data){
-        if(data == 'ok'){
-          _disPlaySuccessMsgCB("sent successfully");
-          _storeInvitation(email);
-        }else if(data == 'nok'){
-          _disPlayErrorMsgCB("Something went wrong, cannot remove your account");
+        if(data != 'nok'){
+          var obj = $.parseJSON(data);
+          if(obj.result == "email_valid_ok"){
+            _disPlaySuccessMsgCB(obj.msg);
+            _storeInvitation(email);
+          }
+          else
+            _disPlayInfoMsgCB(obj.msg);
         }else{
-          _disPlayInfoMsgCB(data);
+          _disPlayErrorMsgCB("Something went wrong, cannot send invitation");
         }
       }
     });

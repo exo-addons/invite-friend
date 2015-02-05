@@ -6,6 +6,7 @@ import juzu.plugin.ajax.Ajax;
 import juzu.request.RequestContext;
 import juzu.request.SecurityContext;
 import org.exoplatform.portal.pom.config.tasks.PreferencesTask;
+import org.json.JSONObject;
 import org.juzu.exoinvitefriend.portlet.commons.models.Invitation;
 import org.juzu.exoinvitefriend.portlet.commons.services.IService;
 
@@ -17,6 +18,7 @@ import javax.portlet.ReadOnlyException;
 import javax.portlet.ValidatorException;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -36,11 +38,13 @@ public class JuZExoInviteFriendFrontendApplication {
   @Path("editMode.gtmpl")
   org.juzu.exoinvitefriend.portlet.frontend.templates.editMode editModeTpl;
   private final static String ENABLE_STORE_DATA = "enableStoreData";
+  private final static String INVITATION_URL = "invitationUrl";
   @View
   public Response index(RequestContext context){
-    Boolean enableStoreData = Boolean.valueOf(portletPreferences.getValue(ENABLE_STORE_DATA,"true"));
     if (PortletMode.EDIT.equals(context.getProperty(JuzuPortlet.PORTLET_MODE))){
-      return editModeTpl.with().set(ENABLE_STORE_DATA,enableStoreData).ok();
+      Boolean enableStoreData = Boolean.valueOf(portletPreferences.getValue(ENABLE_STORE_DATA,"true"));
+      String invitationUrl = portletPreferences.getValue(INVITATION_URL,"");
+      return editModeTpl.with().set(ENABLE_STORE_DATA,enableStoreData).set(INVITATION_URL,invitationUrl).ok();
     }
     return indexTpl.ok();
   }
@@ -48,8 +52,11 @@ public class JuZExoInviteFriendFrontendApplication {
   @Resource
   public Response sendInvitation(SecurityContext securityContext, String email){
     String currentUserName = securityContext.getUserPrincipal().getName();
-    iService.sendInvitation(currentUserName,email);
-    return Response.ok("ok");
+    String invitationUrl = portletPreferences.getValue(INVITATION_URL,"");
+    JSONObject result = iService.sendInvitation(currentUserName, email,invitationUrl);
+    if (null != result)
+      return Response.ok(result.toString());
+    return Response.ok("nok");
   }
   @Ajax
   @Resource
@@ -88,8 +95,9 @@ public class JuZExoInviteFriendFrontendApplication {
   }
 
   @Action
-  public Response saveSettings(String enableStoreData) throws ReadOnlyException, IOException, ValidatorException {
+  public Response saveSettings(String enableStoreData,String invitationUrl) throws ReadOnlyException, IOException, ValidatorException {
     portletPreferences.setValue(ENABLE_STORE_DATA,enableStoreData);
+    portletPreferences.setValue(INVITATION_URL,invitationUrl);
     portletPreferences.store();
     return JuZExoInviteFriendFrontendApplication_.index().with(JuzuPortlet.PORTLET_MODE, PortletMode.VIEW);
   }
