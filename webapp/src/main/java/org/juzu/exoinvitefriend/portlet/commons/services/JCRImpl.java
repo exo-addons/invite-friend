@@ -190,7 +190,9 @@ public class JCRImpl implements IService {
       URI location = URI.create(strUrl+"?invitedemail="+emailInvitee+"&referreremail="+senderEmailEncoded);
       result.put("url",location.toURL().toString());*/
       emailMsg = "sent successfully";
-      this.emailService.sendInvitation(inviter,invitee,invitationUrl);
+      if(!this.emailService.sendInvitation(inviter,invitee,invitationUrl)){
+        emailMsg = "Something went wrong, we cannot send your invitation, please try it later";
+      }
     }
     try {
       result.put("result",emailResult);

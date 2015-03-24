@@ -3,7 +3,9 @@ package org.juzu.exoinvitefriend.portlet.commons.services;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
 import org.exoplatform.services.mail.MailService;
+import org.exoplatform.services.mail.Message;
 import org.exoplatform.social.core.identity.model.Identity;
+import org.exoplatform.social.core.identity.model.Profile;
 import org.exoplatform.social.core.identity.provider.OrganizationIdentityProvider;
 import org.exoplatform.social.core.manager.IdentityManager;
 import org.juzu.exoinvitefriend.portlet.commons.models.Invitation;
@@ -35,7 +37,9 @@ public class EmailService {
     if(null == remoteUrl || "".equals(remoteUrl)){
       remoteUrl = "http://community.exoplatform.com";
     }
-    this.setDNS(System.getProperty("exo.base.url"));
+    this.setDNS("localhost");
+    if(null != System.getProperty("exo.base.url"))
+      this.setDNS(System.getProperty("exo.base.url"));
   }
   private String generateSubject(Identity identity){
     return identity.getProfile().getFullName()+" has invited you to join "+this.getDNS();
@@ -76,28 +80,35 @@ public class EmailService {
     String templateContent = sb.toString();
     if (templateContent != null) {
       for (Map.Entry<String, String> property : properties.entrySet()) {
-        templateContent = templateContent.replace("${" + property.getKey() + "}", property.getValue());
+        if(null != property.getValue())
+          templateContent = templateContent.replace("${" + property.getKey() + "}", property.getValue());
       }
     }
     return templateContent;
   }
-  public void sendInvitation(String inviter,String invitee_email, String invitationUrl){
+  public Boolean sendInvitation(String inviter,String invitee_email, String invitationUrl){
     Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME,inviter,true);
-    if (null != identity){
-      String sender = identity.getProfile().getFullName()+" | "+this.getDNS();
+    if (null != identity && null != identity.getProfile()){
+      Profile profileInviter = identity.getProfile();
+      String sender = profileInviter.getFullName()+" | "+this.getDNS()+"<"+profileInviter.getEmail()+">";
       String subject = this.generateSubject(identity);
       String body = this.generateBody(identity,invitationUrl) ;
       if (null != body){
         try {
-          log.info(" subject "+subject);
-          log.info(" body "+body);
-          exoMailService.sendMessage(sender,invitee_email,subject,body);
+          Message message = new Message();
+          message.setFrom(sender);
+          message.setTo(invitee_email);
+          message.setSubject(subject);
+          message.setBody(body);
+          message.setMimeType("text/html");
+          exoMailService.sendMessage(message);
         } catch (Exception e) {
-          log.error("exo invite friend => cannot send invitation");
-          e.getMessage();
+          log.error("exo invite friend => cannot send invitation "+e.getMessage());
+          return false;
         }
       }
     }
+    return true;
   }
 
   public String getDNS() {
