@@ -33,13 +33,13 @@ public class EmailService {
 
     this.identityManager = identityManager;
     this.exoMailService = mailService;
-    this.remoteUrl = System.getProperty("EXO_DEPLOYMENT_URL");
+    this.remoteUrl = System.getProperty("exo.base.url");
     if(null == remoteUrl || "".equals(remoteUrl)){
       remoteUrl = "http://community.exoplatform.com";
     }
     this.setDNS("localhost");
-    if(null != System.getProperty("exo.base.url"))
-      this.setDNS(System.getProperty("exo.base.url"));
+    if(null != System.getProperty("exo.notification.portalname"))
+      this.setDNS(System.getProperty("exo.notification.portalname"));
   }
   private String generateSubject(Identity identity){
     return identity.getProfile().getFullName()+" has invited you to join "+this.getDNS();
