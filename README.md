@@ -8,7 +8,7 @@ This add-on allows to send an invitation to join your platform instance
    - Send invitation to join on your website via email address.
    - Store invitation informations like inviter, email invitee, date.
    - Edit mode: In this mode, you can enable/disable the data saving settings and you also can set the invitation url.
-   Normally the invitation shoule be the register url.
+   Normally the invitation should be the register url.
 
    **What needs to be configured in platform package**
    - Edit tomcat/gatein/conf/exo.properties file:
