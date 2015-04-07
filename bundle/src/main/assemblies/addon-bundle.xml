@@ -27,4 +27,12 @@
       <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
     </dependencySet>
   </dependencySets>
+   <files>
+    <file>
+      <outputDirectory>/</outputDirectory>
+      <destName>README</destName>
+      <source>../README.md</source>
+      <lineEnding>windows</lineEnding>
+    </file>
+  </files>
 </assembly>
