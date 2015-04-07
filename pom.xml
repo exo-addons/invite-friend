@@ -25,21 +25,8 @@
     <url>https://github.com/exo-addons/invite-friend.git</url>
   </scm>
   <properties>
-    <exoplatform.version>4.1-M2</exoplatform.version>
-    <exo.portal.version>3.5.13-PLF</exo.portal.version>
-    <exo.core.component.organization.version>2.5.11-GA</exo.core.component.organization.version>
-    <exo.core.component.social.version>4.1-M2</exo.core.component.social.version>
-    <exo.component.social.webui.version>4.1.0</exo.component.social.webui.version>
-    <exo.kernel.commons.version>2.4.11-GA</exo.kernel.commons.version>
+    <exoplatform.version>4.1.0</exoplatform.version>
     <juzu.version>1.0.0-cr1</juzu.version>
-
-    <!-- Dependency versions -->
-    <junit.version>4.8.2</junit.version>
-
-    <!-- Test settings -->
-    <juzu.test.compiler>javac</juzu.test.compiler>
-
-
   </properties>
 
   <!--distributionManagement>
@@ -56,37 +43,16 @@
   <dependencyManagement>
     <dependencies>
 
-      <!-- Application dependencies-->
+      <!-- Import versions from platform project -->
       <dependency>
-        <groupId>org.gatein.portal</groupId>
-        <artifactId>exo.portal.component.web.api</artifactId>
-        <version>${exo.portal.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.commons</groupId>
-        <artifactId>commons-component-common</artifactId>
+        <groupId>org.exoplatform.platform</groupId>
+        <artifactId>platform</artifactId>
         <version>${exoplatform.version}</version>
-        <scope>provided</scope>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.exoplatform.core</groupId>
-        <artifactId>exo.core.component.organization.api</artifactId>
-        <version>${exo.core.component.organization.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.social</groupId>
-        <artifactId>social-component-core</artifactId>
-        <version>${exo.core.component.social.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.social</groupId>
-        <artifactId>social-component-webui</artifactId>
-        <version>${exo.component.social.webui.version}</version>
-        <scope>provided</scope>
-      </dependency>
+
+      <!-- Application dependencies-->
       <dependency>
         <groupId>org.juzu</groupId>
         <artifactId>juzu-core</artifactId>
@@ -108,55 +74,9 @@
         <version>1.10.2</version>
       </dependency>
       <dependency>
-        <groupId>org.json</groupId>
-        <artifactId>json</artifactId>
-        <version>20070829</version>
-      </dependency>
-      <dependency>
-        <groupId>javax.portlet</groupId>
-        <artifactId>portlet-api</artifactId>
-        <version>2.0</version>
-      </dependency>
-      <dependency>
         <groupId>org.juzu</groupId>
         <artifactId>juzu-plugins-portlet</artifactId>
         <version>${juzu.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.kernel</groupId>
-        <artifactId>exo.kernel.container</artifactId>
-        <version>2.4.x-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.jcr</groupId>
-        <artifactId>exo.jcr.component.ext</artifactId>
-        <version>1.15.x-SNAPSHOT</version>
-      </dependency>
-
-      <!-- Groovy is shipped with GateIn -->
-      <dependency>
-        <groupId>org.codehaus.groovy</groupId>
-        <artifactId>groovy-all</artifactId>
-        <version>1.7.6</version>
-      </dependency>
-
-      <!-- Servlet 3.x API -->
-      <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>3.0.1</version>
-      </dependency>
-
-      <!-- Dependencies for Guice in GateIn portal -->
-      <dependency>
-        <groupId>javax.inject</groupId>
-        <artifactId>javax.inject</artifactId>
-        <version>1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.inject</groupId>
-        <artifactId>guice</artifactId>
-        <version>3.0</version>
       </dependency>
       <dependency>
         <groupId>org.exoplatform.addons.exo-invite-friend</groupId>

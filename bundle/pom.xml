@@ -11,12 +11,6 @@
   <name>eXo Invite Friend - Bundle</name>
   <description>eXo Invite Friend - Bundle</description>
   <dependencies>
-    <!--dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>remove-my-account-lib</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency-->
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>exo-invite-friend-webapp</artifactId>
