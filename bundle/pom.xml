@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
     <artifactId>exo-invite-friend-addon</artifactId>
-    <version>1.0.x-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
   <artifactId>exo-invite-friend-bundle</artifactId>
   <packaging>jar</packaging>
