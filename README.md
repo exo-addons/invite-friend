@@ -11,8 +11,9 @@ This add-on allows to send an invitation to join your platform instance
    Normally the invitation should be the register url.
 
    **What needs to be configured in platform package**
-   - Edit tomcat/gatein/conf/exo.properties file:
-   set "exo.base.url" for your website url and set "exo.notification.portalname" for your website name.
+   - Edit tomcat/gatein/conf/configuration.properties file:
+   set "gatein.email.domain.url" for your website url (e.g: gatein.email.domain.url=https://intranet.mycompany.com )
+   set "exo.notifications.portalname" for your website name (e.g: exo.notifications.portalname=eXo)
 
    **How to apply this addon to your website**
    - Clone project: git clone https://github.com/exo-addons/invite-friend.git
