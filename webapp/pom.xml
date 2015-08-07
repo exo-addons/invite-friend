@@ -1,136 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
-    <artifactId>exo-invite-friend-addon</artifactId>
-    <version>1.0.x-SNAPSHOT</version>
-  </parent>
-  <artifactId>exo-invite-friend-webapp</artifactId>
-  <packaging>war</packaging>
-  <name>exo-invite-friend - Webapp</name>
-  <description>eXo Invite Friend - portlet webapp</description>
-  <dependencies>
-    <!-- Application dependencies-->
-    <!-- exo -->
-    <dependency>
-      <groupId>org.exoplatform.commons</groupId>
-      <artifactId>commons-component-common</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.exoplatform.core</groupId>
-      <artifactId>exo.core.component.organization.api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.exoplatform.social</groupId>
-      <artifactId>social-component-core</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-       <groupId>org.juzu</groupId>
-       <artifactId>juzu-plugins-less</artifactId>
-       <scope>provided</scope>
-       <version>${juzu.version}</version>
-    </dependency>
-    <dependency>
-       <groupId>org.juzu</groupId>
-       <artifactId>juzu-plugins-portlet</artifactId>
-       <scope>provided</scope>
-       <version>${juzu.version}</version>
-    </dependency>
-    <dependency>
-       <groupId>org.juzu</groupId>
-       <artifactId>juzu-plugins-webjars</artifactId>
-       <scope>provided</scope>
-       <version>${juzu.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.portlet</groupId>
-      <artifactId>portlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.juzu</groupId>
-      <artifactId>juzu-plugins-portlet</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.exoplatform.kernel</groupId>
-      <artifactId>exo.kernel.container</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.exoplatform.jcr</groupId>
-      <artifactId>exo.jcr.component.ext</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Groovy is shipped with GateIn -->
-    <dependency>
-      <groupId>org.codehaus.groovy</groupId>
-      <artifactId>groovy-all</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Servlet 3.x API -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Dependencies for Guice in GateIn portal -->
-    <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.inject</groupId>
-      <artifactId>guice</artifactId>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <finalName>exo-invite-friend-webapp</finalName>
-    <!-- Precompile the template class in maven (this is optional) -->
-    <plugins>
-
-      <plugin>
-        <groupId>org.codehaus.gmaven</groupId>
-        <artifactId>gmaven-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <configuration>
-              <providerSelection>1.7</providerSelection>
-              <sources>
-                <fileset>
-                  <directory>${project.build.outputDirectory}</directory>
-                  <includes>
-                    <include>**/*.groovy</include>
-                  </includes>
-                </fileset>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+      <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
+      <artifactId>exo-invite-friend-addon</artifactId>
+      <version>1.0.x-SNAPSHOT</version>
+   </parent>
+   <artifactId>exo-invite-friend-webapp</artifactId>
+   <packaging>war</packaging>
+   <name>exo-invite-friend - Webapp</name>
+   <description>eXo Invite Friend - portlet webapp</description>
+   <dependencies>
+      <!-- Application dependencies-->
+      <!-- exo -->
+      <dependency>
+         <groupId>org.exoplatform.commons</groupId>
+         <artifactId>commons-component-common</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.exoplatform.core</groupId>
+         <artifactId>exo.core.component.organization.api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.exoplatform.social</groupId>
+         <artifactId>social-component-core</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.juzu</groupId>
+         <artifactId>juzu-plugins-less</artifactId>
+         <scope>provided</scope>
+         <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.juzu</groupId>
+         <artifactId>juzu-plugins-portlet</artifactId>
+         <scope>provided</scope>
+         <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.juzu</groupId>
+         <artifactId>juzu-plugins-webjars</artifactId>
+         <scope>provided</scope>
+         <version>${juzu.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.webjars</groupId>
+         <artifactId>jquery</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.json</groupId>
+         <artifactId>json</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>javax.portlet</groupId>
+         <artifactId>portlet-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.exoplatform.kernel</groupId>
+         <artifactId>exo.kernel.container</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.exoplatform.jcr</groupId>
+         <artifactId>exo.jcr.component.ext</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- Groovy is shipped with GateIn -->
+      <dependency>
+         <groupId>org.codehaus.groovy</groupId>
+         <artifactId>groovy-all</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- Servlet 3.x API -->
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>javax.servlet-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- Dependencies for Guice in GateIn portal -->
+      <dependency>
+         <groupId>javax.inject</groupId>
+         <artifactId>javax.inject</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>com.google.inject</groupId>
+         <artifactId>guice</artifactId>
+         <scope>provided</scope>
+      </dependency>
+   </dependencies>
+   <build>
+      <finalName>exo-invite-friend-webapp</finalName>
+      <!-- Precompile the template class in maven (this is optional) -->
+      <plugins>
+         <plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>gmaven-plugin</artifactId>
+            <version>1.5</version>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>compile</goal>
+                  </goals>
+                  <configuration>
+                     <providerSelection>1.7</providerSelection>
+                     <sources>
+                        <fileset>
+                           <directory>${project.build.outputDirectory}</directory>
+                           <includes>
+                              <include>**/*.groovy</include>
+                           </includes>
+                        </fileset>
+                     </sources>
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+      </plugins>
+   </build>
 </project>

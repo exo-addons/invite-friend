@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>addons-parent-pom</artifactId>
-    <groupId>org.exoplatform.addons</groupId>
-    <version>4</version>
-    <relativePath />
-  </parent>
-  <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
-  <artifactId>exo-invite-friend-addon</artifactId>
-  <version>1.0.x-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>eXo Invite Friend</name>
-  <description>allow user to invite his friends on exo</description>
-  <modules>
-    <module>webapp</module>
-    <module>bundle</module>
-  </modules>
-  <scm>
-    <connection>scm:git:git://github.com/exo-addons/invite-friend.git</connection>
-    <developerConnection>scm:git:git@github.com:exo-addons/invite-friend.git</developerConnection>
-    <tag>HEAD</tag>
-    <url>https://github.com/exo-addons/invite-friend.git</url>
-  </scm>
-  <properties>
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+      <artifactId>addons-parent-pom</artifactId>
+      <groupId>org.exoplatform.addons</groupId>
+      <version>4</version>
+      <relativePath />
+   </parent>
+   <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
+   <artifactId>exo-invite-friend-addon</artifactId>
+   <version>1.0.x-SNAPSHOT</version>
+   <packaging>pom</packaging>
+   <name>eXo Invite Friend</name>
+   <description>allow user to invite his friends on exo</description>
+   <modules>
+      <module>webapp</module>
+      <module>bundle</module>
+   </modules>
+   <scm>
+      <connection>scm:git:git://github.com/exo-addons/invite-friend.git</connection>
+      <developerConnection>scm:git:git@github.com:exo-addons/invite-friend.git</developerConnection>
+      <tag>HEAD</tag>
+      <url>https://github.com/exo-addons/invite-friend.git</url>
+   </scm>
+   <properties>
       <exoplatform.version>4.2.0</exoplatform.version>
       <juzu.version>1.0.0</juzu.version>
-  </properties>
-
-  <!--distributionManagement>
+   </properties>
+   <!--distributionManagement>
     <repository>
       <id>repository.exoplatform.org</id>
       <url>http://repository.exoplatform.org/service/local/staging/deploy/maven2/</url>
@@ -39,99 +37,88 @@
       <url>http://repository.exoplatform.org/content/repositories/juzu-snapshots/</url>
     </snapshotRepository>
   </distributionManagement-->
-
-  <dependencyManagement>
-    <dependencies>
-
-      <!-- Import versions from platform project -->
-      <dependency>
-        <groupId>org.exoplatform.platform</groupId>
-        <artifactId>platform</artifactId>
-        <version>${exoplatform.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <!-- Application dependencies-->
-      <dependency>
-         <groupId>org.exoplatform.platform</groupId>
-         <artifactId>platform</artifactId>
-         <version>${exoplatform.version}</version>
-         <type>pom</type>
-         <scope>import</scope>
-      </dependency>
+   <dependencyManagement>
+      <dependencies>
+         <!-- Import versions from platform project -->
+         <dependency>
+            <groupId>org.exoplatform.platform</groupId>
+            <artifactId>platform</artifactId>
+            <version>${exoplatform.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
          <!-- Application dependencies-->
          <dependency>
-         <groupId>org.juzu</groupId>
-         <artifactId>juzu-plugins-less</artifactId>
-         <scope>provided</scope>
-         <version>${juzu.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.juzu</groupId>
-         <artifactId>juzu-plugins-portlet</artifactId>
-         <scope>provided</scope>
-         <version>${juzu.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.webjars</groupId>
-        <artifactId>jquery</artifactId>
-        <version>1.10.2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
-        <artifactId>exo-invite-friend-webapp</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-  <profiles>
-    <profile>
-      <id>project-repositories</id>
-      <activation>
-        <property>
-          <name>!skip-project-repositories</name>
-        </property>
-      </activation>
-      <repositories>
-        <repository>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-          <id>repository.exoplatform.org</id>
-          <url>https://repository.exoplatform.org/public</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-          <id>repository.exoplatform.org</id>
-          <url>https://repository.exoplatform.org/public</url>
-        </pluginRepository>
-      </pluginRepositories>
-    </profile>
-  </profiles>
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-war-plugin</artifactId>
-          <configuration>
-            <!-- Don't include libraries into Web Archives -->
-            <!--packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes-->
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <configuration>
-            <appendAssemblyId>false</appendAssemblyId>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+            <groupId>org.juzu</groupId>
+            <artifactId>juzu-plugins-less</artifactId>
+            <scope>provided</scope>
+            <version>${juzu.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.juzu</groupId>
+            <artifactId>juzu-plugins-portlet</artifactId>
+            <scope>provided</scope>
+            <version>${juzu.version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>1.10.2</version>
+         </dependency>
+         <dependency>
+            <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
+            <artifactId>exo-invite-friend-webapp</artifactId>
+            <version>${project.version}</version>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+   <profiles>
+      <profile>
+         <id>project-repositories</id>
+         <activation>
+            <property>
+               <name>!skip-project-repositories</name>
+            </property>
+         </activation>
+         <repositories>
+            <repository>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+               <id>repository.exoplatform.org</id>
+               <url>https://repository.exoplatform.org/public</url>
+            </repository>
+         </repositories>
+         <pluginRepositories>
+            <pluginRepository>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+               <id>repository.exoplatform.org</id>
+               <url>https://repository.exoplatform.org/public</url>
+            </pluginRepository>
+         </pluginRepositories>
+      </profile>
+   </profiles>
+   <build>
+      <pluginManagement>
+         <plugins>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-war-plugin</artifactId>
+               <configuration>
+                  <!-- Don't include libraries into Web Archives -->
+                  <!--packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes-->
+               </configuration>
+            </plugin>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-assembly-plugin</artifactId>
+               <configuration>
+                  <appendAssemblyId>false</appendAssemblyId>
+               </configuration>
+            </plugin>
+         </plugins>
+      </pluginManagement>
+   </build>
 </project>
