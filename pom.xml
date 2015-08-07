@@ -25,8 +25,8 @@
     <url>https://github.com/exo-addons/invite-friend.git</url>
   </scm>
   <properties>
-    <exoplatform.version>4.1.0</exoplatform.version>
-    <juzu.version>1.0.0-cr1</juzu.version>
+      <exoplatform.version>4.2.0</exoplatform.version>
+      <juzu.version>1.0.0</juzu.version>
   </properties>
 
   <!--distributionManagement>
@@ -54,29 +54,29 @@
 
       <!-- Application dependencies-->
       <dependency>
-        <groupId>org.juzu</groupId>
-        <artifactId>juzu-core</artifactId>
-        <version>${juzu.version}</version>
+         <groupId>org.exoplatform.platform</groupId>
+         <artifactId>platform</artifactId>
+         <version>${exoplatform.version}</version>
+         <type>pom</type>
+         <scope>import</scope>
+      </dependency>
+         <!-- Application dependencies-->
+         <dependency>
+         <groupId>org.juzu</groupId>
+         <artifactId>juzu-plugins-less</artifactId>
+         <scope>provided</scope>
+         <version>${juzu.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.juzu</groupId>
-        <artifactId>juzu-plugins-servlet</artifactId>
-        <version>${juzu.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.juzu</groupId>
-        <artifactId>juzu-plugins-webjars</artifactId>
-        <version>${juzu.version}</version>
+         <groupId>org.juzu</groupId>
+         <artifactId>juzu-plugins-portlet</artifactId>
+         <scope>provided</scope>
+         <version>${juzu.version}</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>jquery</artifactId>
         <version>1.10.2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.juzu</groupId>
-        <artifactId>juzu-plugins-portlet</artifactId>
-        <version>${juzu.version}</version>
       </dependency>
       <dependency>
         <groupId>org.exoplatform.addons.exo-invite-friend</groupId>
